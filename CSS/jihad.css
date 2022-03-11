@@ -376,6 +376,7 @@ a {
 
 /* Start Articles */
 .articles {
+  position: relative;
 }
 .articles .container {
   display: grid;
@@ -383,15 +384,184 @@ a {
   gap: 30px;
 }
 .articles .box {
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  border-radius: 6px;
+  overflow: hidden;
+  transition: transform var(--main-transition),
+    box-shadow var(--main-transition);
+}
+
+.articles .box:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
 }
 .articles .box img {
   max-width: 100%;
 }
 .articles .box .content {
+  padding: 20px;
+}
+.articles .box .content h3 {
+  margin-bottom: 10px;
+}
+.articles .box .content p {
+  color: #777;
+  line-height: 1.5;
 }
 .articles .box .info {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 2px solid #eee;
+}
+.articles .box .info a {
+  color: var(--main-color);
+  font-weight: bold;
+}
+
+.articles .box .info i {
+  color: var(--main-color);
+}
+.articles .box:hover .info i {
+  animation: arrow-to-left 0.5s linear infinite;
 }
 /* End Articles */
+
+/* Start Gallery */
+.gallery {
+  position: relative;
+  background: var(--section-background);
+}
+.gallery .container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 40px;
+}
+
+.gallery .container .box{
+  padding: 15px;
+  background-color: #fff;
+  box-shadow: 0px 12px 20px 0px rgb(0 0 0 / 13%), 0px 2px 4px 0px rgb(0 0 0 / 12%);
+}
+
+.gallery .container .image {
+  position: relative;
+  overflow: hidden;
+}
+.gallery .container .image::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgb(255 255 255 / 20%);
+  width: 0;
+  height: 0;
+  opacity: 0;
+  z-index: 2;
+}
+
+.gallery .container .image:hover::before {
+  animation: flashing 0.7s;
+}
+.gallery .container .image img {
+  max-width: 100%;
+  transition: var(--main-transition);
+}
+
+.gallery .container .image:hover img{
+transform: scale(1.1) rotate(5deg);
+}
+
+/* End Gallery */
+
+/* Start Features */
+.features{
+ position: relative;
+ background-color: #fff;
+}
+
+.features .container{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 40px;
+
+}
+
+.features .container .box{
+  border: 1px solid #ccc;
+}
+.features .image-holder{
+position: relative;
+overflow: hidden;
+}
+
+.features .image-holder::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+.features .image-holder::after {
+	content: "";
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	border-width: 0px 0px 170px 500px;
+	border-color: transparent transparent white transparent;
+	border-style: solid;
+  transition: var(--main-transition);
+}
+
+.features .box:hover .image-holder::after{
+  border-width: 0px 500px 170px 0px;
+	border-color: transparent transparent white transparent;
+}
+
+.features .image-holder img{
+  max-width: 100%;
+}
+
+.features .box h2{
+  font-size: 30px;
+margin: 0 auto 20px;
+width: fit-content;
+position: relative;
+}
+
+.features .box h2::after {
+	content: "";
+	position: absolute;
+	bottom: -20px;
+	left: 15px;
+	width: calc(100% - 30px);
+	height: 5px;
+	background-color: red;
+}
+.features .box p {
+	margin: 20px auto;
+	line-height: 2;
+	font-size: 16px;
+	color: #777;
+  padding:20px;
+}
+.features .box a {
+	color: red;
+	margin: 0 auto 20px;
+	display: block;
+	text-align: center;
+	font-size: 25px;
+	font-weight: bold;
+	border: 2px solid red;
+	padding: 10px 15px;
+	width: fit-content;
+	border-radius: 6px;
+}
+/* End Features */
 
 /* Start Animation */
 @keyframes up-down {
@@ -400,7 +570,7 @@ a {
     top: 0;
   }
   50% {
-    top: -30px;
+    top: -10px;
   }
 }
 @keyframes bouncing {
@@ -441,6 +611,22 @@ a {
     width: 100%;
     height: 100%;
     right: 0;
+  }
+}
+@keyframes arrow-to-left {
+  100% {
+    transform: translateX(10px);
+  }
+}
+@keyframes flashing {
+  0%,
+  40% {
+    opacity: 1;
+  }
+  100% {
+    width: 200%;
+    height: 200%;
+    opacity: 0;
   }
 }
 /* End Animation */
