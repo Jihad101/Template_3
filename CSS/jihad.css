@@ -575,8 +575,8 @@ a {
 }
 
 .features .box a {
-    display: block;
-margin: 0 auto 30px;
+  display: block;
+  margin: 0 auto 30px;
   font-size: 25px;
   font-weight: bold;
   border: 3px solid transparent;
@@ -618,78 +618,322 @@ margin: 0 auto 30px;
 /* End Features */
 
 /* Start Testimonials */
-.testimonials{
+.testimonials {
   position: relative;
   background-color: var(--section-background);
 }
 
-.testimonials .container{
+.testimonials .container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 40px;
 }
 
 .testimonials .box {
-	padding: 30px;
-	position: relative;
-	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.09);
+  padding: 30px;
+  position: relative;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.09);
   background-color: #fff;
 }
 
-.testimonials .box img{
+.testimonials .box img {
   position: absolute;
   right: -10px;
   top: -50px;
-  border-radius:50%;
+  border-radius: 50%;
   width: 100px;
   border: 10px solid var(--section-background);
 }
 
-.testimonials .box h3{
+.testimonials .box h3 {
   color: var(--main-color);
   margin-bottom: 20px;
 }
 
-.testimonials .box .title{
+.testimonials .box .title {
   display: block;
   color: #777;
   margin-bottom: 10px;
 }
-.testimonials .box .rate .filled{
+.testimonials .box .rate .filled {
   color: #ffc107;
 }
 
-.testimonials .box p{
+.testimonials .box p {
   margin-top: 10px;
   color: #777;
 }
 /* End Testimonials */
 
 /* Start Team Members */
-.team{
-
+.team {
+  position: relative;
+  /* background-color: #fff; */
 }
 
-.team{
-  
+.team .container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
 }
 
-.team{
-  
+.team .box {
+  position: relative;
 }
 
-.team{
-  
+.team .box::before,
+.team .box::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: calc(100% - 60px);
+  border-radius: 10px;
+  transition: var(--main-transition);
+}
+.team .box::before {
+  background-color: #f3f3f3;
+  z-index: -2;
+}
+.team .box::after {
+  background-color: #e4e4e4;
+  z-index: -1;
+  width: 0;
 }
 
-.team{
-  
+.team .box:hover:after {
+  width: calc(100% - 60px);
 }
 
-.team{
-  
+.team .box .data {
+  display: flex;
+  align-items: center;
+  padding-top: 60px;
+}
+
+.team .box .data img {
+  width: calc(100% - 60px);
+  transition: var(--main-transition);
+  border-radius: 10px;
+}
+
+.team .box:hover img {
+  filter: grayscale(100%);
+}
+
+.team .box .data .social {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60px;
+  gap: 30px;
+}
+
+.team .box .data .social a {
+  width: 60px;
+  display: grid;
+  place-items: center;
+  height: 30px;
+}
+
+.team .box .data .social i {
+  color: #777;
+  transition: var(--main-transition);
+}
+
+.team .box .data i:hover {
+  color: var(--main-color);
+}
+.team .box .info {
+  padding-left: 80px;
+}
+
+.team .box .info h3 {
+  color: var(--main-color);
+  padding: 10px 0;
+  transition: var(--main-transition);
+}
+
+.team .box:hover .info h3 {
+  color: #777;
+}
+
+.team .box .info p {
+  padding: 0 0 20px;
+  color: #777;
 }
 /* End Team Members */
+
+/* Start Services */
+.services {
+  position: relative;
+  background-color: var(--section-background);
+}
+
+.services .container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 40px;
+}
+
+.services .container .box {
+  background-color: #fff;
+  box-shadow: 0 12px 20px 0 / rgba(0, 0, 0, 0.13);
+  box-shadow: 0 2px 4px 0 / rgba(0, 0, 0, 0.12);
+  counter-increment: services;
+  transition: var(--main-transition);
+  position: relative;
+  text-align: center;
+  position: relative;
+}
+.services .container .box::before {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 3px;
+  width: 0;
+  background-color: var(--main-color);
+  transition: var(--main-transition);
+}
+.services .container .box:hover {
+  transform: translateY(-10px);
+}
+.services .container .box:hover::before {
+  width: 100%;
+}
+.services .container .box > i {
+  display: block;
+  margin: 30px auto 10px;
+  color: #d5d5d5;
+}
+
+.services .container .box > h3 {
+  font-size: 25px;
+  color: var(--main-color);
+  margin-bottom: 30px;
+}
+
+.services .container .box > .info {
+  position: relative;
+  background-color: #f9f9f9;
+  text-align: right;
+  font-size: 22px;
+  padding: 10px;
+  text-align: right;
+  font-weight: bold;
+}
+.services .box .info::before {
+  content: "0" counter(services);
+  position: absolute;
+  left: 0;
+  background-color: #d5d5d5;
+  width: 80px;
+  display: grid;
+  place-items: center;
+  height: 100%;
+  top: 0;
+  padding-right: 10px;
+  color: var(--main-color);
+  font-weight: bold;
+}
+.services .box .info::after {
+  content: "";
+  position: absolute;
+  left: 80px;
+  background-color: #d5d5d5;
+  width: 50px;
+  height: 100%;
+  top: 0;
+  transform: skew(-15deg);
+  background-color: var(--main-color);
+}
+.services .container .box > .info a {
+  color: var(--main-color);
+}
+/* End Services */
+
+/* Start Our Skills */
+
+.skills {
+  position: relative;
+  background-color: #fff;
+}
+
+.skills .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@media (max-width:992px){
+  .skills .container {
+    justify-content: center;
+  }
+}
+
+.skills .container .img-holder {
+  flex-basis: 40%;
+  width: fit-content;
+  display: grid;
+  place-items: center;
+}
+@media (max-width:992px){
+  .skills .container .img-holder{
+    display: none;
+  }
+}
+.skills .container .img-holder img {
+  max-width: 100%;
+}
+.skills .container .skill-holder {
+  flex-basis: 55%;
+}
+@media (max-width:992px){
+  .skills .container .skill-holder {
+    flex-basis: 90%;
+  }
+}
+
+.skills .container .skill-holder .skill p {
+  color: #000;
+  font-weight: bold;
+  text-align: left;
+  padding: 20px 10px 10px 0;
+  font-size: 20px;
+  position: relative;
+  color: black;
+}
+.skills .container .skill-holder .skill p::after {
+  content: ""attr(data-skill);
+  color: var(--main-color);
+  position: absolute;
+  right: 0;
+  top: calc(50% + 4px);
+  transform: translateY(-50%);
+  height: 20px;
+  width: fit-content;
+  padding: 2px;
+  border: 1px solid var(--main-color);
+  border-radius: 6px;
+  text-align: center;
+  font-size: medium;
+  display: grid;
+  place-items: center;
+}
+.skills .container .skill-holder .skill div {
+  height: 30px;
+  width: 100%;
+  background-color: #eee;
+}
+
+.skills .container .skill-holder .skill span {
+  display: block;
+  height: 100%;
+  background-color: var(--main-color);
+}
+/* End Our Skills */
 
 /* Start Animation */
 @keyframes up-down {
